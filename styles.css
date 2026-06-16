@@ -249,13 +249,13 @@ body.modal-open { overflow: hidden; }
   .hero-cards .pcard:nth-child(2),
   .hero-cards .pcard:nth-child(3) { transform: none; margin: 0; width: 100%; max-width: 280px; }
   .hero-cards .pcard.pcard-lg { max-width: 280px; }
-  .reviews-grid, .portfolio-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .review, .folio, .price-card { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
-  /* Pricing: clean tappable promo cards — image already shows price + CTA */
-  .price-card { padding: 0; gap: 0; background: transparent; border: 0; box-shadow: none; cursor: pointer; max-width: 420px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .pricing-grid, .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .review { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
+  /* Pricing: compact tappable promo tiles — image already shows price + CTA */
+  .price-card { padding: 0; gap: 0; background: transparent; border: 0; box-shadow: none; cursor: pointer; width: 100%; }
   .price-card:active { transform: scale(0.99); }
-  .price-card > img { border-radius: 16px; }
+  .price-card > img, .folio img { border-radius: 12px; }
   .price-row, .price-label, .price-btn { display: none; }
   .site-footer { padding-bottom: 86px; }
   .cta-inner { flex-direction: column; text-align: center; }
