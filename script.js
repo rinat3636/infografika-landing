@@ -15,15 +15,19 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  var portfolioToggle = document.getElementById("portfolioToggle");
-  var portfolioGrid = document.querySelector(".portfolio-grid");
-  if (portfolioToggle && portfolioGrid) {
-    portfolioToggle.addEventListener("click", function (event) {
+  function wireToggle(toggleId, gridSelector) {
+    var toggle = document.getElementById(toggleId);
+    var grid = document.querySelector(gridSelector);
+    if (!toggle || !grid) return;
+    toggle.addEventListener("click", function (event) {
       event.preventDefault();
-      var expanded = portfolioGrid.classList.toggle("is-expanded");
-      portfolioToggle.textContent = expanded ? "Свернуть" : "Смотреть больше";
+      var expanded = grid.classList.toggle("is-expanded");
+      toggle.textContent = expanded ? "Свернуть" : "Смотреть больше";
     });
   }
+
+  wireToggle("portfolioToggle", ".portfolio-grid");
+  wireToggle("reviewsToggle", ".reviews-grid");
 
   var form = document.querySelector(".form");
   if (!form) return;
