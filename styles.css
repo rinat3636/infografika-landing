@@ -183,7 +183,7 @@ body {
 .modal { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; padding: 20px; }
 .modal.is-open { display: flex; }
 .modal-overlay { position: absolute; inset: 0; background: rgba(6, 6, 12, 0.66); }
-.modal-box { position: relative; z-index: 1; width: 100%; max-width: 420px; background: #fff; border-radius: var(--radius); padding: 30px 26px 26px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
+.modal-box { position: relative; z-index: 1; width: 100%; max-width: 420px; max-height: calc(100vh - 40px); overflow-y: auto; background: #fff; border-radius: var(--radius); padding: 30px 26px 26px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6); }
 .modal-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; color: #a6a6b4; font-size: 28px; line-height: 1; cursor: pointer; }
 .modal-close:hover { color: var(--ink); }
 body.modal-open { overflow: hidden; }
@@ -252,6 +252,12 @@ body.modal-open { overflow: hidden; }
   .reviews-grid, .portfolio-grid { grid-template-columns: 1fr; }
   .pricing-grid { grid-template-columns: 1fr; }
   .review, .folio, .price-card { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
+  /* Pricing: clean tappable promo cards — image already shows price + CTA */
+  .price-card { padding: 0; gap: 0; background: transparent; border: 0; box-shadow: none; cursor: pointer; max-width: 420px; }
+  .price-card:active { transform: scale(0.99); }
+  .price-card > img { border-radius: 16px; }
+  .price-row, .price-label, .price-btn { display: none; }
+  .site-footer { padding-bottom: 86px; }
   .cta-inner { flex-direction: column; text-align: center; }
   .cta-left { flex-direction: column; }
   .cta-btn { width: 100%; }

@@ -90,6 +90,15 @@
     });
   });
 
+  // На мобильном кнопка «Написать» скрыта — открываем форму по тапу на карточку.
+  document.querySelectorAll(".price-card").forEach(function (card) {
+    card.addEventListener("click", function (e) {
+      if (e.target.closest(".price-btn")) return;
+      var btn = card.querySelector(".price-btn");
+      openModal(btn ? btn.getAttribute("data-service") || "" : "");
+    });
+  });
+
   // ---- Обработка форм заявок ----
   function buildMessage(name, contact, service) {
     var lines = ["<b>🆕 Новая заявка с сайта</b>", ""];
