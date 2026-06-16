@@ -243,12 +243,22 @@ body.modal-open { overflow: hidden; }
   .fab { right: 14px; bottom: 14px; gap: 10px; }
   .fab-btn { width: 50px; height: 50px; }
   .fab-tg img { width: 50px; height: 50px; }
-  .hero-cards { flex-wrap: wrap; gap: 16px; }
+  /* Tighter, consistent vertical rhythm on phones */
+  .hero { padding: 8px 0 22px; }
+  .benefits-form { padding: 10px 0 30px; }
+  .benefits-card { gap: 20px; }
+  .reviews { padding: 18px 0; }
+  .portfolio { padding: 18px 0 34px; }
+  .pricing.is-open { padding: 4px 0 26px; }
+  .cta-banner { padding: 6px 0 40px; }
+  /* Hero product cards become a swipeable carousel (peek of next card) */
+  .hero-cards { flex-wrap: nowrap; justify-content: flex-start; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: 8px; scrollbar-width: none; }
+  .hero-cards::-webkit-scrollbar { display: none; }
   .hero-cards .pcard,
   .hero-cards .pcard:nth-child(1),
   .hero-cards .pcard:nth-child(2),
-  .hero-cards .pcard:nth-child(3) { transform: none; margin: 0; width: 100%; max-width: 280px; }
-  .hero-cards .pcard.pcard-lg { max-width: 280px; }
+  .hero-cards .pcard:nth-child(3) { transform: none; margin: 0; width: auto; flex: 0 0 78%; max-width: 290px; scroll-snap-align: start; }
+  .hero-cards .pcard.pcard-lg { flex: 0 0 82%; max-width: 310px; }
   .reviews-grid { grid-template-columns: 1fr; }
   .pricing-grid, .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .review { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
