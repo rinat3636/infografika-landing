@@ -64,39 +64,13 @@ body {
 .mp-ym b { color: #ffce00; }
 .mp-mm { color: #b388ff; }
 
-.hero-cards { display: flex; align-items: flex-start; justify-content: center; padding: 0; transform: translateX(-30px); }
-.pcard { position: relative; flex: 0 0 auto; width: 178px; height: 356px; border-radius: 16px; overflow: hidden; padding: 15px; color: #fff; display: flex; flex-direction: column; background-size: cover; background-position: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6); }
-.pcard.pcard-lg { width: 212px; height: 410px; }
-.pcard-thermos { background-position: 62% center; }
-.pcard-serum { background-position: center; }
-.hero-cards .pcard:nth-child(1) { transform: rotate(-6deg) translateY(26px); z-index: 2; margin-right: -16px; }
-.hero-cards .pcard:nth-child(2) { transform: rotate(3deg) translateY(0); z-index: 3; }
-.hero-cards .pcard:nth-child(3) { transform: rotate(6deg) translateY(32px); z-index: 1; margin-left: -6px; }
-.pcard-serum .pcard-foot { text-align: right; }
-.pcard::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(7, 7, 14, 0.78) 0%, rgba(7, 7, 14, 0.08) 34%, rgba(7, 7, 14, 0.05) 60%, rgba(7, 7, 14, 0.82) 100%); }
-.pcard > * { position: relative; z-index: 1; }
-.pcard-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.4px; color: #d7c8ff; }
-.pcard-eyebrow-sm { font-size: 9px; font-weight: 700; letter-spacing: 0.3px; color: #cfc2ff; }
-.pcard-eyebrow { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: #c4b5fd; padding-right: 46px; }
-.pcard-title.big { padding-right: 46px; font-size: 24px; }
-.pcard-title { font-size: 21px; font-weight: 900; line-height: 0.98; text-transform: uppercase; margin-top: 2px; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6); }
-.pcard-title span { font-size: 12px; font-weight: 700; color: #d4d4e2; text-transform: uppercase; }
-.pcard-vol { display: block; margin-top: 2px; font-size: 17px; font-weight: 900; color: #fff; letter-spacing: 0.3px; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7); }
-.pcard-pill { display: inline-block; align-self: flex-start; margin-top: 8px; background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; padding: 5px 11px; border-radius: 20px; }
-.pcard-specs { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
-.pcard-specs li { font-size: 9px; font-weight: 700; letter-spacing: 0.5px; color: #d4d4e2; text-transform: uppercase; line-height: 1; }
-.pcard-specs b { display: block; font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 2px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); }
-.pcard-features { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
-.pcard-features li { font-size: 11px; color: #dcdce8; padding-left: 14px; position: relative; }
-.pcard-features li::before { content: "•"; position: absolute; left: 0; color: #a855f7; }
-.pcard-foot { margin-top: auto; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #c4c4d4; line-height: 1.25; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8); }
-.pcard-pill + .pcard-features { margin-top: 8px; }
-.pcard-features li { font-size: 10px; }
-.pcard-note { margin-top: auto; position: relative; font-size: 8.5px; line-height: 1.2; color: #d4d4e2; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85); padding-right: 28px; }
-.pcard-discount { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 900; color: #fff; }
-.pcard-note-dot { width: 17px; height: 17px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #a855f7); color: #fff; font-size: 9px; display: inline-flex; align-items: center; justify-content: center; }
-.pcard-note-text { display: block; margin-top: 7px; }
-.pcard-num { position: absolute; right: 0; bottom: 0; font-size: 11px; font-weight: 800; color: #c4b5fd; }
+.hero-cards { display: flex; align-items: center; justify-content: center; padding: 0; transform: translateX(-20px); }
+.pcard { position: relative; flex: 0 0 auto; width: 190px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6); background: #0c0c12; }
+.pcard.pcard-lg { width: 226px; }
+.pcard img { display: block; width: 100%; height: auto; }
+.hero-cards .pcard:nth-child(1) { transform: rotate(-6deg) translateY(14px); z-index: 2; margin-right: -14px; }
+.hero-cards .pcard:nth-child(2) { transform: rotate(3deg); z-index: 3; }
+.hero-cards .pcard:nth-child(3) { transform: rotate(6deg) translateY(18px); z-index: 1; margin-left: -10px; }
 
 /* ---------- BENEFITS + FORM ---------- */
 .benefits-form { padding: 16px 0 40px; }
@@ -211,16 +185,9 @@ body {
 @media (min-width: 981px) and (max-width: 1180px) {
   .hero-title { font-size: clamp(30px, 5vw, 50px); }
   .hero-copy { padding-top: 16px; }
-  .hero-cards { transform: translateX(-10px); }
-  .pcard { width: 152px; height: 304px; }
-  .pcard.pcard-lg { width: 180px; height: 352px; }
-  .pcard-title { font-size: 18px; }
-  .pcard-title.big { font-size: 21px; }
-  .pcard-vol { font-size: 15px; }
-  .pcard-specs { gap: 9px; margin-top: 12px; }
-  .pcard-specs b { font-size: 17px; }
-  .pcard-features li { font-size: 9px; }
-  .pcard-discount { font-size: 12px; }
+  .hero-cards { transform: translateX(-8px); }
+  .pcard { width: 158px; }
+  .pcard.pcard-lg { width: 190px; }
 }
 
 /* Large tablets / small laptops */
@@ -255,8 +222,8 @@ body {
   .hero-cards .pcard,
   .hero-cards .pcard:nth-child(1),
   .hero-cards .pcard:nth-child(2),
-  .hero-cards .pcard:nth-child(3) { transform: none; margin: 0; width: 100%; max-width: 300px; height: 300px; }
-  .hero-cards .pcard.pcard-lg { max-width: 300px; height: 340px; }
+  .hero-cards .pcard:nth-child(3) { transform: none; margin: 0; width: 100%; max-width: 280px; }
+  .hero-cards .pcard.pcard-lg { max-width: 280px; }
   .reviews-grid, .portfolio-grid { grid-template-columns: 1fr; }
   .review, .folio { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
   .cta-inner { flex-direction: column; text-align: center; }
