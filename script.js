@@ -29,32 +29,86 @@
   wireToggle("portfolioToggle", ".portfolio-grid");
   wireToggle("reviewsToggle", ".reviews-grid");
 
-  var form = document.querySelector(".form");
-  if (!form) return;
+  // ---- Блок «Цены и услуги» ----
+  var pricing = document.getElementById("pricing");
+  var pricingToggle = document.getElementById("pricingToggle");
+  var pricingClose = document.getElementById("pricingClose");
+  if (pricing && pricingToggle) {
+    pricingToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      pricing.classList.add("is-open");
+      pricing.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+  if (pricing && pricingClose) {
+    pricingClose.addEventListener("click", function (event) {
+      event.preventDefault();
+      pricing.classList.remove("is-open");
+      if (pricingToggle) pricingToggle.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 
-  var success = form.querySelector(".form-success");
-  var button = form.querySelector(".btn");
+  // ---- Модальная форма заявки ----
+  var modal = document.getElementById("leadModal");
+  var modalSub = document.getElementById("modalServiceSub");
+  var modalForm = modal ? modal.querySelector(".form") : null;
 
-  function buildMessage(name, contact) {
-    var lines = [
-      "<b>🆕 Новая заявка с сайта</b>",
-      "",
-      "<b>Имя:</b> " + name,
-      "<b>Контакт:</b> " + contact,
-      "",
-      "🌐 " + location.host
-    ];
+  function openModal(service) {
+    if (!modal) return;
+    if (modalForm) modalForm.dataset.service = service || "";
+    if (modalSub) {
+      modalSub.textContent = service
+        ? "Услуга: " + service
+        : "и я свяжусь с вами по выбранной услуге";
+    }
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    var firstInput = modal.querySelector('input[name="name"]');
+    if (firstInput) firstInput.focus();
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  if (modal) {
+    modal.querySelectorAll("[data-close]").forEach(function (el) {
+      el.addEventListener("click", closeModal);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeModal();
+    });
+  }
+
+  document.querySelectorAll(".price-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openModal(btn.getAttribute("data-service") || "");
+    });
+  });
+
+  // ---- Обработка форм заявок ----
+  function buildMessage(name, contact, service) {
+    var lines = ["<b>🆕 Новая заявка с сайта</b>", ""];
+    if (service) lines.push("<b>Услуга:</b> " + service);
+    lines.push("<b>Имя:</b> " + name);
+    lines.push("<b>Контакт:</b> " + contact);
+    lines.push("");
+    lines.push("🌐 " + location.host);
     return lines.join("\n");
   }
 
-  function sendToTelegram(name, contact) {
+  function sendToTelegram(name, contact, service) {
     var url = "https://api.telegram.org/bot" + TELEGRAM.token + "/sendMessage";
     return fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: TELEGRAM.chatId,
-        text: buildMessage(name, contact),
+        text: buildMessage(name, contact, service),
         parse_mode: "HTML",
         disable_web_page_preview: true
       })
@@ -67,57 +121,65 @@
     });
   }
 
-  function showResult(message, ok) {
-    if (!success) return;
-    success.hidden = false;
-    success.textContent = message;
-    success.style.color = ok ? "#16a34a" : "#e0556b";
-  }
+  function initForm(form) {
+    var success = form.querySelector(".form-success");
+    var button = form.querySelector('button[type="submit"]');
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    function showResult(message, ok) {
+      if (!success) return;
+      success.hidden = false;
+      success.textContent = message;
+      success.style.color = ok ? "#16a34a" : "#e0556b";
+    }
 
-    var name = form.querySelector('input[name="name"]');
-    var contact = form.querySelector('input[name="contact"]');
-    var consent = form.querySelector('input[name="consent"]');
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    if (!name.value.trim() || !contact.value.trim() || !consent.checked) {
-      [name, contact].forEach(function (input) {
-        input.parentElement.style.borderColor = input.value.trim() ? "" : "#e0556b";
-      });
-      if (!consent.checked) {
-        consent.parentElement.style.color = "#e0556b";
+      var name = form.querySelector('input[name="name"]');
+      var contact = form.querySelector('input[name="contact"]');
+      var consent = form.querySelector('input[name="consent"]');
+
+      if (!name.value.trim() || !contact.value.trim() || !consent.checked) {
+        [name, contact].forEach(function (input) {
+          input.parentElement.style.borderColor = input.value.trim() ? "" : "#e0556b";
+        });
+        if (!consent.checked) {
+          consent.parentElement.style.color = "#e0556b";
+        }
+        return;
       }
-      return;
-    }
 
-    var nameVal = name.value.trim();
-    var contactVal = contact.value.trim();
+      var nameVal = name.value.trim();
+      var contactVal = contact.value.trim();
+      var service = form.dataset.service || "";
 
-    // Если Telegram не настроен — просто показываем успех (заглушка).
-    if (!TELEGRAM.token || !TELEGRAM.chatId) {
-      showResult("Спасибо! Заявка принята — скоро свяжусь с вами.", true);
-      button.disabled = true;
-      name.value = "";
-      contact.value = "";
-      return;
-    }
-
-    button.disabled = true;
-    var oldText = button.textContent;
-    button.textContent = "Отправляю…";
-
-    sendToTelegram(nameVal, contactVal)
-      .then(function () {
-        showResult("Спасибо! Заявка отправлена — скоро свяжусь с вами.", true);
+      // Если Telegram не настроен — просто показываем успех (заглушка).
+      if (!TELEGRAM.token || !TELEGRAM.chatId) {
+        showResult("Спасибо! Заявка принята — скоро свяжусь с вами.", true);
+        button.disabled = true;
         name.value = "";
         contact.value = "";
-        button.textContent = oldText;
-      })
-      .catch(function () {
-        showResult("Не удалось отправить заявку. Напишите мне напрямую в Telegram.", false);
-        button.disabled = false;
-        button.textContent = oldText;
-      });
-  });
+        return;
+      }
+
+      button.disabled = true;
+      var oldText = button.textContent;
+      button.textContent = "Отправляю…";
+
+      sendToTelegram(nameVal, contactVal, service)
+        .then(function () {
+          showResult("Спасибо! Заявка отправлена — скоро свяжусь с вами.", true);
+          name.value = "";
+          contact.value = "";
+          button.textContent = oldText;
+        })
+        .catch(function () {
+          showResult("Не удалось отправить заявку. Напишите мне напрямую в Telegram.", false);
+          button.disabled = false;
+          button.textContent = oldText;
+        });
+    });
+  }
+
+  document.querySelectorAll(".form").forEach(function (f) { initForm(f); });
 })();

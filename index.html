@@ -16,7 +16,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <span class="badge badge-purple">ДИЗАЙН КАРТОЧЕК ТОВАРОВ</span>
-      <span class="header-tagline">ДЛЯ МАРКЕТПЛЕЙСОВ, <span class="accent">ЦЕНЫ И УСЛУГИ</span></span>
+      <span class="header-tagline">ДЛЯ МАРКЕТПЛЕЙСОВ, <button type="button" class="accent link-btn" id="pricingToggle">ЦЕНЫ И УСЛУГИ</button></span>
     </div>
   </header>
 
@@ -98,6 +98,48 @@
             <p class="form-success" hidden>Спасибо! Заявка отправлена — скоро свяжусь с вами.</p>
           </form>
         </aside>
+      </div>
+    </section>
+
+    <!-- PRICING / SERVICES -->
+    <section class="pricing" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">ЦЕНЫ И УСЛУГИ</h2>
+          <button type="button" class="see-more pricing-close" id="pricingClose">Свернуть</button>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card">
+            <img src="assets/img/service-01.png" alt="Инфографика и дизайн на 5 слайдов" />
+            <div class="price-row"><span class="price-now">3 100 ₽</span><span class="price-old">4 500 ₽</span></div>
+            <div class="price-label">5 слайдов</div>
+            <button type="button" class="btn btn-primary btn-block price-btn" data-service="Инфографика и дизайн — 5 слайдов (3 100 ₽)">Написать</button>
+          </article>
+          <article class="price-card">
+            <img src="assets/img/service-02.png" alt="Дополнительный слайд" />
+            <div class="price-row"><span class="price-now">600 ₽</span><span class="price-old">900 ₽</span></div>
+            <div class="price-label">Дополнительный слайд</div>
+            <button type="button" class="btn btn-primary btn-block price-btn" data-service="Дополнительный слайд (600 ₽)">Написать</button>
+          </article>
+          <article class="price-card">
+            <img src="assets/img/service-03.png" alt="Rich контент" />
+            <div class="price-row"><span class="price-now">1 000 ₽</span><span class="price-old">1 500 ₽</span></div>
+            <div class="price-label">Rich контент</div>
+            <button type="button" class="btn btn-primary btn-block price-btn" data-service="Rich контент (1 000 ₽)">Написать</button>
+          </article>
+          <article class="price-card">
+            <img src="assets/img/service-04.png" alt="Супер Акция: 2 доп. слайда в подарок при заказе 5 слайдов" />
+            <div class="price-row"><span class="price-now">3 100 ₽</span><span class="price-old">8 000 ₽</span></div>
+            <div class="price-label">Супер Акция 😍🔥</div>
+            <button type="button" class="btn btn-primary btn-block price-btn" data-service="Супер Акция: 2 доп. слайда в подарок (3 100 ₽)">Написать</button>
+          </article>
+          <article class="price-card">
+            <img src="assets/img/service-05.png" alt="Главный слайд" />
+            <div class="price-row"><span class="price-now">700 ₽</span><span class="price-old">1 100 ₽</span></div>
+            <div class="price-label">Главный слайд</div>
+            <button type="button" class="btn btn-primary btn-block price-btn" data-service="Главный слайд (700 ₽)">Написать</button>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -285,6 +327,31 @@
       <img src="assets/img/icon-tg.svg" alt="Telegram" />
     </a>
     <a class="fab-btn fab-call" href="tel:+79619214118" aria-label="Позвонить" title="Позвонить">📞</a>
+  </div>
+
+  <div class="modal" id="leadModal" aria-hidden="true">
+    <div class="modal-overlay" data-close></div>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal-close" data-close aria-label="Закрыть">×</button>
+      <h2 class="form-title" id="modalTitle">ОСТАВЬТЕ ЗАЯВКУ</h2>
+      <p class="form-sub" id="modalServiceSub">и я свяжусь с вами по выбранной услуге</p>
+      <form class="form" novalidate>
+        <label class="field">
+          <span class="field-icon">👤</span>
+          <input type="text" name="name" placeholder="Ваше имя" required />
+        </label>
+        <label class="field">
+          <span class="field-icon">📞</span>
+          <input type="text" name="contact" placeholder="Телефон / Max/Telegram" required />
+        </label>
+        <button type="submit" class="btn btn-primary btn-block">ОТПРАВИТЬ ЗАЯВКУ</button>
+        <label class="consent">
+          <input type="checkbox" name="consent" required />
+          <span>Даю согласие на обработку персональных данных</span>
+        </label>
+        <p class="form-success" hidden>Спасибо! Заявка отправлена — скоро свяжусь с вами.</p>
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>
