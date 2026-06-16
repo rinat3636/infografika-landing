@@ -240,13 +240,14 @@ body.modal-open { overflow: hidden; }
 /* Phones — flatten hero cards, single-column grids */
 @media (max-width: 640px) {
   .hero-title .grad-text { white-space: normal; }
-  .fab { right: 14px; bottom: 14px; gap: 10px; }
-  .fab-btn { width: 50px; height: 50px; }
-  .fab-tg img { width: 50px; height: 50px; }
+  .fab { right: 12px; bottom: 12px; gap: 10px; }
+  .fab-btn { width: 46px; height: 46px; }
+  .fab-tg img { width: 46px; height: 46px; }
+  .fab-call { font-size: 20px; }
   /* Tighter, consistent vertical rhythm on phones */
-  .hero { padding: 8px 0 22px; }
-  .benefits-form { padding: 10px 0 30px; }
-  .benefits-card { gap: 20px; }
+  .hero { padding: 8px 0 24px; }
+  .benefits-form { padding: 8px 0 28px; }
+  .benefits-card { gap: 18px; padding: 22px; }
   .reviews { padding: 18px 0; }
   .portfolio { padding: 18px 0 34px; }
   .pricing.is-open { padding: 4px 0 26px; }
@@ -258,21 +259,36 @@ body.modal-open { overflow: hidden; }
   .reviews-grid { grid-template-columns: 1fr; }
   .pricing-grid, .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .review { max-width: 460px; margin-left: auto; margin-right: auto; width: 100%; }
-  /* Pricing: compact tappable promo tiles — image already shows price + CTA */
-  .price-card { padding: 0; gap: 0; background: transparent; border: 0; box-shadow: none; cursor: pointer; width: 100%; }
-  .price-card:active { transform: scale(0.99); }
+  /* Pricing: full PC-style card (image + price + label + «Написать»), just 2-up */
+  .price-card { padding: 10px; gap: 8px; }
   .price-card > img, .folio img { border-radius: 12px; }
-  .price-row, .price-label, .price-btn { display: none; }
-  .site-footer { padding-bottom: 86px; }
+  .price-now { font-size: 20px; }
+  .price-old { font-size: 13px; }
+  .price-label { font-size: 12px; }
+  .price-btn { padding: 11px 12px; font-size: 13px; }
+  .site-footer { padding-bottom: 80px; }
   .cta-inner { flex-direction: column; text-align: center; }
   .cta-left { flex-direction: column; }
   .cta-btn { width: 100%; }
   .gift-banner { flex-wrap: wrap; border-radius: 18px; row-gap: 8px; padding: 16px 18px; }
   .gift-divider { display: none; }
-  .lead-form { padding: 22px; }
-  .about { padding: 32px 0 24px; }
+  .lead-form { padding: 20px; }
+  .about { padding: 28px 0 22px; }
   .section-head { gap: 12px; }
   .see-more::before { display: none; }
+  /* consistent gutters + per-block fine-tuning */
+  .container { padding: 0 16px; }
+  .marketplaces { gap: 10px; margin-top: 18px; }
+  .mp-chip { height: 42px; padding: 0 12px; }
+  .mp-chip img { height: 22px; }
+  .hero-sub { margin-top: 16px; }
+  .about-list { margin: 20px 0; gap: 14px; }
+  .about-list li { font-size: 15px; padding-left: 32px; }
+  .contacts-card { padding: 22px; }
+  .review { padding: 16px; }
+  .cta-inner { padding: 22px 20px; }
+  .cta-left p { font-size: 15px; }
+  .modal-box { padding: 24px 20px 20px; }
 }
 
 /* Small phones */
