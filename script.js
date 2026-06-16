@@ -15,6 +15,16 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
+  var portfolioToggle = document.getElementById("portfolioToggle");
+  var portfolioGrid = document.querySelector(".portfolio-grid");
+  if (portfolioToggle && portfolioGrid) {
+    portfolioToggle.addEventListener("click", function (event) {
+      event.preventDefault();
+      var expanded = portfolioGrid.classList.toggle("is-expanded");
+      portfolioToggle.textContent = expanded ? "Свернуть" : "Смотреть больше";
+    });
+  }
+
   var form = document.querySelector(".form");
   if (!form) return;
 

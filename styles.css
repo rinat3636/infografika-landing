@@ -158,19 +158,10 @@ body {
 /* ---------- PORTFOLIO ---------- */
 .portfolio { padding: 26px 0 46px; }
 .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.folio { position: relative; border-radius: 16px; padding: 18px; min-height: 250px; overflow: hidden; color: #fff; }
-.folio-dark { background: linear-gradient(160deg, #181826, #08080e); }
-.folio-blue { background: linear-gradient(160deg, #0d2b5e, #061330); }
-.folio-body { position: relative; z-index: 2; max-width: 62%; }
-.folio h3 { font-family: "Oswald", sans-serif; font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; }
-.folio-sub { font-size: 11px; color: #b9b9c8; letter-spacing: 1px; }
-.folio-desc { font-size: 10px; color: #b9b9c8; margin-top: 4px; max-width: 60%; }
-.folio-badge { display: inline-block; margin-top: 8px; background: var(--purple); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 8px; }
-.folio-corner { position: absolute; top: 16px; right: 16px; z-index: 3; font-size: 12px; font-weight: 800; color: #fff; }
-.folio-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
-.folio-list li { font-size: 10px; color: #d0d0dc; position: relative; padding-left: 14px; }
-.folio-list li::before { content: "•"; position: absolute; left: 0; color: var(--purple-2); }
-.folio-img { position: absolute; top: 0; right: 0; bottom: 0; width: 56%; height: 100%; object-fit: cover; object-position: center; z-index: 1; -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%); mask-image: linear-gradient(to right, transparent 0%, #000 40%); }
+.folio { position: relative; border-radius: 16px; overflow: hidden; background: #0c0c12; border: 1px solid var(--line); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4); }
+.folio img { display: block; width: 100%; height: auto; }
+.folio--extra { display: none; }
+.portfolio-grid.is-expanded .folio--extra { display: block; }
 
 /* ---------- CTA BANNER ---------- */
 .cta-banner { padding: 6px 0 50px; }
