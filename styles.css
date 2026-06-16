@@ -58,11 +58,9 @@ body {
 .hero-title .grad-text { white-space: nowrap; padding-right: 0; }
 .hero-sub { margin-top: 22px; font-size: clamp(15px, 1.7vw, 19px); color: #d4d4e2; font-weight: 500; }
 .marketplaces { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.mp-chip { font-size: 13px; font-weight: 800; letter-spacing: 0.5px; padding: 11px 18px; border-radius: 10px; color: #fff; background: #16161f; border: 1px solid var(--line); display: inline-flex; align-items: center; gap: 4px; }
-.mp-wb { background: linear-gradient(135deg, #cb11ab, #481173); }
-.mp-ozon { background: linear-gradient(135deg, #005bff, #0a2db8); }
-.mp-ym b { color: #ffce00; }
-.mp-mm { color: #b388ff; }
+.mp-chip { padding: 0 16px; height: 46px; border-radius: 10px; background: #16161f; border: 1px solid var(--line); display: inline-flex; align-items: center; }
+.mp-chip img { height: 26px; width: auto; display: block; }
+.mp-chip.mp-wide img { height: 19px; }
 
 .hero-cards { display: flex; align-items: center; justify-content: center; padding: 0; transform: translateX(-20px); }
 .pcard { position: relative; flex: 0 0 auto; width: 190px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 22px 55px rgba(0, 0, 0, 0.6); background: #0c0c12; }
