@@ -1,6 +1,16 @@
 (function () {
   "use strict";
 
+  // Сайт всегда открывается сверху (на главной), а не на форме заявки,
+  // даже если в URL остался якорь #zayavka или браузер хочет восстановить прокрутку.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash === "#zayavka") {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+  window.addEventListener("load", function () {
+    if (!location.hash) window.scrollTo(0, 0);
+  });
+
   // ---- Настройки Telegram ----
   // Заполните значениями от @BotFather и чат/группы, куда слать заявки.
   // Внимание: это статичный сайт — токен будет виден в исходном коде страницы.
@@ -98,6 +108,16 @@
       openModal(btn ? btn.getAttribute("data-service") || "" : "");
     });
   });
+
+  // Кнопка «ОСТАВИТЬ ЗАЯВКУ»: плавно прокручиваем к форме без добавления якоря в URL.
+  var ctaLead = document.querySelector('.cta-btn[href="#zayavka"]');
+  if (ctaLead) {
+    ctaLead.addEventListener("click", function (e) {
+      e.preventDefault();
+      var form = document.getElementById("zayavka");
+      if (form) form.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
 
   // ---- Обработка форм заявок ----
   function buildMessage(name, contact, service) {
