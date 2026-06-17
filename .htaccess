@@ -1,0 +1,83 @@
+# ===== idesighn.ru — SEO + Performance =====
+Options -Indexes
+
+# 1. Редирект на HTTPS и убираем www (301)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # с www на без www
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # http на https
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # убираем index.html / index.php из URL
+  RewriteCond %{THE_REQUEST} ^.*/index\.(html?|php)
+  RewriteRule ^(.*)index\.(html?|php)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # базовая защита от хотлинка изображений
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://(www\.)?idesighn\.ru [NC]
+  RewriteRule \.(jpg|jpeg|png|webp|svg)$ - [F,L]
+</IfModule>
+
+# 2. Сжатие
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+</IfModule>
+
+# 3. Кэширование статики
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType application/xml "access plus 1 hour"
+</IfModule>
+
+# 4. Заголовки безопасности и SEO
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # долгое кэширование для статики (уже настроено через Expires, дублируем Cache-Control)
+  <FilesMatch "\.(css|js|jpg|jpeg|png|webp|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+# 5. ETag
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+FileETag None
+
+# 6. MIME-типы
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+  AddType text/cache-manifest .appcache
+  AddCharset UTF-8 .html .css .js .xml .json
+</IfModule>
+
+# 7. Кастомные страницы ошибок
+ErrorDocument 404 /index.html

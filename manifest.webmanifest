@@ -1,0 +1,40 @@
+{
+  "name": "Инфографика, которая продаёт — idesighn.ru",
+  "short_name": "idesighn.ru",
+  "description": "Дизайн карточек товаров для Wildberries, Ozon, Яндекс Маркет и Megamarket. Продающая инфографика от дизайнера-маркетолога.",
+  "lang": "ru-RU",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0716",
+  "theme_color": "#6b1dff",
+  "categories": ["business", "productivity", "design"],
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

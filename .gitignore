@@ -1,0 +1,22 @@
+﻿# Локальные служебные файлы
+.server.log
+.server.err.log
+
+# Диагностические скрипты и картинки, не нужные на проде
+check-server.ps1
+clean-hero.ps1
+copy-photos.ps1
+fix-pcards.ps1
+fix-socials.ps1
+list-photos.ps1
+verify-hero.ps1
+assets/img/prod-headphones.jpg
+assets/img/prod-headphones-center.jpg
+assets/img/prod-speaker.jpg
+assets/img/prod-vacuum.jpg
+
+# OS / IDE
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

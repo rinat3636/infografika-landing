@@ -1,0 +1,9 @@
+﻿/* TEAM */
+Дизайнер-маркетолог: Иван Буров
+Контакт: https://t.me/ivan2000disainer
+Сайт: https://idesighn.ru
+
+/* SITE */
+Last update: 2026/06/17
+Standards: HTML5, CSS3, ES2022
+Components: schema.org JSON-LD, OpenGraph, Twitter Card, PWA manifest

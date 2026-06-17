@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://idesighn.ru/</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ru-RU" href="https://idesighn.ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://idesighn.ru/" />
+    <image:image>
+      <image:loc>https://idesighn.ru/assets/img/card-apods.jpg</image:loc>
+      <image:title>Инфографика карточки товара A.Pods Pro 2</image:title>
+      <image:caption>Пример дизайна карточки для маркетплейса Wildberries</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://idesighn.ru/assets/img/card-vacuum.jpg</image:loc>
+      <image:title>Инфографика моющего пылесоса</image:title>
+      <image:caption>Продающий слайд для карточки товара</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://idesighn.ru/assets/img/card-speaker.jpg</image:loc>
+      <image:title>Инфографика Bluetooth-колонки</image:title>
+      <image:caption>Дизайн слайда карточки с RGB-подсветкой</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://idesighn.ru/#pricing</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://idesighn.ru/#zayavka</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://idesighn.ru/#portfolio</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://idesighn.ru/#reviews</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
