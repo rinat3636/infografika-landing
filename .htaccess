@@ -80,4 +80,6 @@ FileETag None
 </IfModule>
 
 # 7. Кастомные страницы ошибок
-ErrorDocument 404 /index.html
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+ErrorDocument 403 /404.html
