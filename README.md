@@ -57,7 +57,7 @@ python -m http.server 8123
 
 ### Изображения
 - SVG-фавикон `assets/img/favicon.svg`
-- OG-image `assets/img/og-image.svg` 1200×630
+- OG-image `assets/img/og-image.jpg` 1200×630 (растровый — корректно отображается в Telegram, VK, WhatsApp)
 - Apple-touch 180, icon 192/512 (PNG)
 - Все `<img>` имеют `width`/`height` (нет CLS), `loading="lazy"` (кроме hero), `decoding="async"`, описательные `alt`
 

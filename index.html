@@ -20,7 +20,7 @@
   <meta name="googlebot" content="index, follow" />
   <meta name="yandex" content="index, follow" />
   <!-- Замените значения на реальные коды подтверждения из Яндекс.Вебмастера и Google Search Console -->
-  <meta name="yandex-verification" content="PLACEHOLDER_YANDEX_VERIFICATION" />
+  <meta name="yandex-verification" content="99305ed40098e65d" />
   <meta name="google-site-verification" content="PLACEHOLDER_GOOGLE_VERIFICATION" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -50,9 +50,9 @@
   <meta property="og:title" content="Инфографика для маркетплейсов — дизайн карточек, который продаёт" />
   <meta property="og:description" content="Дизайн карточек товаров для Wildberries, Ozon, Яндекс Маркет и Megamarket. Повышаю CTR и продажи. 5+ лет опыта. Цены от 600 ₽." />
   <meta property="og:url" content="https://idesighn.ru/" />
-  <meta property="og:image" content="https://idesighn.ru/assets/img/og-image.svg" />
-  <meta property="og:image:secure_url" content="https://idesighn.ru/assets/img/og-image.svg" />
-  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image" content="https://idesighn.ru/assets/img/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://idesighn.ru/assets/img/og-image.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Инфографика, которая продаёт — дизайн карточек для маркетплейсов" />
@@ -61,16 +61,26 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Инфографика для маркетплейсов — дизайн карточек" />
   <meta name="twitter:description" content="Продающая инфографика для Wildberries, Ozon, Яндекс Маркет и Megamarket. 5+ лет опыта." />
-  <meta name="twitter:image" content="https://idesighn.ru/assets/img/og-image.svg" />
+  <meta name="twitter:image" content="https://idesighn.ru/assets/img/og-image.jpg" />
   <meta name="twitter:image:alt" content="Инфографика, которая продаёт — idesighn.ru" />
 
   <!-- VK OpenGraph (используется ВКонтакте) -->
-  <meta property="vk:image" content="https://idesighn.ru/assets/img/og-image.svg" />
+  <meta property="vk:image" content="https://idesighn.ru/assets/img/og-image.jpg" />
 
-  <!-- Шрифты с preconnect -->
+  <!-- Производительность: ранние соединения -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="dns-prefetch" href="https://mc.yandex.ru" />
+
+  <!-- LCP-изображение героя — приоритетная загрузка -->
+  <link rel="preload" as="image" href="assets/img/card-vacuum.jpg" fetchpriority="high" />
+
+  <!-- Шрифты грузим асинхронно, чтобы не блокировать первичный рендеринг -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Oswald:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Oswald:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Oswald:wght@500;600;700&display=swap" />
+  </noscript>
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -131,15 +141,15 @@
 
         <div class="hero-cards">
           <article class="pcard">
-            <img src="assets/img/card-apods.jpg" width="768" height="1024" alt="A.Pods Pro 2 — беспроводные наушники" />
+            <img src="assets/img/card-apods.jpg" width="768" height="1024" decoding="async" fetchpriority="low" alt="A.Pods Pro 2 — беспроводные наушники" />
           </article>
 
           <article class="pcard pcard-lg">
-            <img src="assets/img/card-vacuum.jpg" width="773" height="1024" alt="Моющий пылесос для мебели, ковров и окон" />
+            <img src="assets/img/card-vacuum.jpg" width="773" height="1024" fetchpriority="high" decoding="async" alt="Моющий пылесос для мебели, ковров и окон" />
           </article>
 
           <article class="pcard">
-            <img src="assets/img/card-speaker.jpg" width="650" height="866" alt="Беспроводная Bluetooth-колонка с RGB-подсветкой" />
+            <img src="assets/img/card-speaker.jpg" width="650" height="866" decoding="async" fetchpriority="low" alt="Беспроводная Bluetooth-колонка с RGB-подсветкой" />
           </article>
         </div>
       </div>
@@ -149,19 +159,20 @@
     <section class="benefits-form">
       <div class="container bf-grid">
         <div class="benefits-card">
+          <h2 class="visually-hidden">Преимущества дизайна карточек для маркетплейсов</h2>
           <div class="benefit">
             <div class="benefit-icon"><img src="assets/img/icon-ctr.svg" alt="" /></div>
-            <h4>ПОВЫШАЮ<br />CTR</h4>
+            <h3>ПОВЫШАЮ<br />CTR</h3>
             <p>Яркий и цепляющий дизайн привлекает внимание и увеличивает кликабельность</p>
           </div>
           <div class="benefit">
             <div class="benefit-icon"><img src="assets/img/icon-sales.svg" alt="" /></div>
-            <h4>УВЕЛИЧИВАЮ<br />ПРОДАЖИ</h4>
+            <h3>УВЕЛИЧИВАЮ<br />ПРОДАЖИ</h3>
             <p>Структурирую информацию и выделяю выгоды товара, чтобы покупатель нажал «Купить»</p>
           </div>
           <div class="benefit">
             <div class="benefit-icon"><img src="assets/img/icon-result.svg" alt="" /></div>
-            <h4>РАБОТАЮ НА<br />РЕЗУЛЬТАТ</h4>
+            <h3>РАБОТАЮ НА<br />РЕЗУЛЬТАТ</h3>
             <p>Анализирую нишу и конкурентов, создаю дизайн, который выделяет ваш товар среди других</p>
           </div>
         </div>
@@ -273,7 +284,7 @@
     </section>
 
     <!-- REVIEWS -->
-    <section class="reviews">
+    <section class="reviews" id="reviews">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
@@ -365,7 +376,7 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="portfolio">
+    <section class="portfolio" id="portfolio">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">ПОРТФОЛИО</h2>
@@ -500,7 +511,7 @@
           "width": 512,
           "height": 512
         },
-        "image": "https://idesighn.ru/assets/img/og-image.svg",
+        "image": "https://idesighn.ru/assets/img/og-image.jpg",
         "description": "Дизайн карточек товаров и инфографика для Wildberries, Ozon, Яндекс Маркет, Megamarket. Повышаем CTR и продажи на маркетплейсах.",
         "founder": {
           "@type": "Person",
@@ -566,7 +577,7 @@
         "isPartOf": { "@id": "https://idesighn.ru/#website" },
         "inLanguage": "ru-RU",
         "description": "Продающая инфографика и дизайн карточек товаров для Wildberries, Ozon, Яндекс Маркет и Megamarket.",
-        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://idesighn.ru/assets/img/og-image.svg" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://idesighn.ru/assets/img/og-image.jpg" },
         "breadcrumb": { "@id": "https://idesighn.ru/#breadcrumb" }
       },
       {
@@ -870,14 +881,17 @@
   }
   </script>
 
-  <!-- ===== Яндекс.Метрика (замените COUNTER_ID на свой номер счётчика) ===== -->
+  <!-- ===== Яндекс.Метрика ===== -->
   <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r;
-    a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    // ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    var YM_COUNTER_ID = 109958762;
+    if (YM_COUNTER_ID) {
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r;
+      a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(YM_COUNTER_ID, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    }
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/109958762" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
   <script src="script.js"></script>
 </body>
