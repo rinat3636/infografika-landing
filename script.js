@@ -16,8 +16,10 @@
   // Внимание: это статичный сайт — токен будет виден в исходном коде страницы.
   // Используйте отдельного бота только для заявок.
   var TELEGRAM = {
-    token: "", // например "1234567890:AA..."
-    chatId: "" // например "123456789" или "-1001234567890" для группы
+    token: "8733618781:AAGSRb30-XonVlVx5PYSrHHrUGs-dzrV8kc", // токен @Infographicvv_bot
+    // Базовый список получателей — им заявка идёт всегда.
+    // Кроме этого, любой, кто недавно нажал Start, подхватывается автоматически (см. getRecipients).
+    chatIds: ["8384059998"]
   };
 
   var yearEl = document.getElementById("year");
@@ -130,23 +132,52 @@
     return lines.join("\n");
   }
 
+  // Кому слать заявку: базовый список + все, кто недавно написал/нажал Start боту.
+  // getUpdates возвращает личные чаты — их chat_id объединяем с базовыми.
+  function getRecipients() {
+    var base = TELEGRAM.chatIds.slice();
+    var url = "https://api.telegram.org/bot" + TELEGRAM.token + "/getUpdates";
+    return fetch(url)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var ids = {};
+        base.forEach(function (id) { ids[String(id)] = true; });
+        if (data && data.ok && data.result) {
+          data.result.forEach(function (upd) {
+            var msg = upd.message || upd.my_chat_member || {};
+            var chat = msg.chat || {};
+            if (chat.id && chat.type === "private") ids[String(chat.id)] = true;
+          });
+        }
+        return Object.keys(ids);
+      })
+      .catch(function () { return base; });
+  }
+
   function sendToTelegram(name, contact, service) {
     var url = "https://api.telegram.org/bot" + TELEGRAM.token + "/sendMessage";
-    return fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: TELEGRAM.chatId,
-        text: buildMessage(name, contact, service),
-        parse_mode: "HTML",
-        disable_web_page_preview: true
-      })
-    }).then(function (res) {
-      if (!res.ok) throw new Error("Telegram HTTP " + res.status);
-      return res.json();
-    }).then(function (data) {
-      if (!data.ok) throw new Error(data.description || "Telegram error");
-      return data;
+    var text = buildMessage(name, contact, service);
+    return getRecipients().then(function (chatIds) {
+      if (!chatIds.length) throw new Error("Нет получателей");
+      var sends = chatIds.map(function (chatId) {
+        return fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: text,
+            parse_mode: "HTML",
+            disable_web_page_preview: true
+          })
+        })
+          .then(function (res) { return res.json(); })
+          .then(function (data) { return !!data.ok; })
+          .catch(function () { return false; });
+      });
+      return Promise.all(sends).then(function (results) {
+        if (!results.some(Boolean)) throw new Error("Telegram: all sends failed");
+        return results;
+      });
     });
   }
 
@@ -183,7 +214,7 @@
       var service = form.dataset.service || "";
 
       // Если Telegram не настроен — просто показываем успех (заглушка).
-      if (!TELEGRAM.token || !TELEGRAM.chatId) {
+      if (!TELEGRAM.token || !TELEGRAM.chatIds.length) {
         showResult("Спасибо! Заявка принята — скоро свяжусь с вами.", true);
         button.disabled = true;
         name.value = "";
