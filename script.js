@@ -57,6 +57,15 @@
       if (pricingToggle) pricingToggle.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
+  if (pricing) {
+    document.querySelectorAll('a[href="#pricing"]').forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        pricing.classList.add("is-open");
+        pricing.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
 
   // ---- Модальная форма заявки ----
   var modal = document.getElementById("leadModal");
